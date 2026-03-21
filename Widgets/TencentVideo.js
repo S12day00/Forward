@@ -14,7 +14,7 @@ var WidgetMetadata = {
             cacheDuration: 3600,
             params: [
                 {
-                    name: "mediaType",
+                    name: "sort_by",
                     title: "影视类型",
                     type: "enumeration",
                     value: "tv",
