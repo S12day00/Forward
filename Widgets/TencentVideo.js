@@ -11,37 +11,43 @@ var WidgetMetadata = {
             title: "腾讯视频",
             functionName: "loadPlatformList",
             type: "video",
+            cacheDuration: 3600,
             params: [
                 {
-                    name: "MediaType",
-                    title: "影视类型",
+                    name: "category",
+                    title: "分类",
                     type: "enumeration",
                     value: "tv",
                     enumOptions: [
-                        { title: "剧集", value: "tv" },
-                        { title: "动漫", value: "anime" },
-                        { title: "综艺", value: "variety" },
-                        { title: "电影", value: "movie" }
+                        { title: "📺 剧集", value: "tv" },
+                        { title: "🐰 动漫", value: "anime" },
+                        { title: "🎤 综艺", value: "variety" },
+                        { title: "🎬 电影", value: "movie" }
                     ]
                 },
                 {
-                    name: "SortBy",
-                    title: "排序方式",
+                    name: "sortBy",
+                    title: "排序",
                     type: "enumeration",
                     value: "hot",
                     enumOptions: [
-                        { title: "平台热度榜", value: "hot" },
-                        { title: "最新上线榜", value: "new" },
-                        { title: "TMDB高分榜", value: "top" }
+                        { title: "🔥 平台热度榜", value: "hot" },
+                        { title: "🆕 最新上线榜", value: "new" },
+                        { title: "🏆 TMDB 高分榜", value: "top" }
                     ]
                 },
-                { name: "page", title: "页码", type: "page", startPage: 1 }
+                {
+                    name: "page",
+                    title: "页码",
+                    type: "page",
+                    startPage: 1
+                }
             ]
         }
     ]
 };
 
-// 腾讯视频 TMDB ID
+// 腾讯视频 TMDB 映射
 const TENCENT_CONFIG = {
     network: "2007|3353",
     provider: "138",
@@ -49,103 +55,115 @@ const TENCENT_CONFIG = {
     name: "腾讯视频"
 };
 
-// 类型映射
-function getCategoryParams(category, isMovie) {
-    let params = {};
+const GENRE_MAP = {
+    16: "动漫",
+    10764: "综艺",
+    10767: "综艺"
+};
 
-    if (category === "anime") {
-        params.with_genres = "16";
-    } else if (category === "variety") {
-        params.with_genres = "10764|10767";
-    } else if (category === "tv") {
-        params.without_genres = "16,10764,10767";
-    }
-
-    return params;
+function getGenre(ids) {
+    if (!ids) return "影视";
+    const g = ids.map(id => GENRE_MAP[id]).filter(Boolean);
+    return g[0] || "影视";
 }
 
-// 构建卡片
 function buildItem(item, isMovie) {
-    if (!item) return null;
-
-    const title = item.title || item.name;
-    const score = item.vote_average ? item.vote_average.toFixed(1) : "0.0";
-
     return {
         id: String(item.id),
-        tmdbId: parseInt(item.id),
         type: "tmdb",
         mediaType: isMovie ? "movie" : "tv",
-        title: title,
-        description: `📺 腾讯视频 | ⭐ ${score}`,
+
+        title: item.title || item.name,
         releaseDate: item.release_date || item.first_air_date || "",
-        posterPath: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "",
-        backdropPath: item.backdrop_path ? `https://image.tmdb.org/t/p/w780${item.backdrop_path}` : "",
-        rating: score
+
+        posterPath: item.poster_path 
+            ? `https://image.tmdb.org/t/p/w500${item.poster_path}` 
+            : "",
+        backdropPath: item.backdrop_path 
+            ? `https://image.tmdb.org/t/p/w780${item.backdrop_path}` 
+            : "",
+
+        rating: item.vote_average?.toFixed(1) || "0.0",
+
+        genreTitle: getGenre(item.genre_ids),
+
+        description: `腾讯视频 | ⭐ ${item.vote_average?.toFixed(1) || "0.0"}`
     };
 }
 
-// 主函数
-async function loadTencentList(params) {
-    const category = params.category || "tv";
-    const sortBy = params.sortBy || "hot";
-    const page = params.page || 1;
-
-    const isMovie = (category === "movie");
-    const endpoint = isMovie ? "/discover/movie" : "/discover/tv";
-
-    let queryParams = {
-        language: "zh-CN",
-        page: page
-    };
-
-    // 腾讯限制
-    if (isMovie) {
-        queryParams.with_watch_providers = TENCENT_CONFIG.provider;
-        queryParams.watch_region = TENCENT_CONFIG.region;
-    } else {
-        queryParams.with_networks = TENCENT_CONFIG.network;
-    }
-
-    // 分类过滤
-    Object.assign(queryParams, getCategoryParams(category, isMovie));
-
-    // 排序逻辑
-    const today = new Date().toISOString().split('T')[0];
-
-    if (sortBy === "hot") {
-        queryParams.sort_by = "popularity.desc";
-        queryParams["vote_count.gte"] = 2;
-    } 
-    else if (sortBy === "new") {
-        queryParams.sort_by = isMovie ? "primary_release_date.desc" : "first_air_date.desc";
-        if (isMovie) {
-            queryParams["primary_release_date.lte"] = today;
-        } else {
-            queryParams["first_air_date.lte"] = today;
-        }
-    } 
-    else if (sortBy === "top") {
-        queryParams.sort_by = "vote_average.desc";
-        queryParams["vote_count.gte"] = 30;
-    }
-
+async function loadTencentList(params = {}) {
     try {
-        const res = await Widget.tmdb.get(endpoint, { params: queryParams });
-        const items = (res.results || []).map(i => buildItem(i, isMovie)).filter(Boolean);
+        const category = params.category || "tv";
+        const sortBy = params.sortBy || "hot";
+        const page = params.page || 1;
 
-        if (items.length === 0) {
+        const today = new Date().toISOString().split("T")[0];
+        const isMovie = category === "movie";
+
+        const endpoint = isMovie ? "/discover/movie" : "/discover/tv";
+
+        let query = {
+            language: "zh-CN",
+            page: page
+        };
+
+        // 腾讯视频过滤
+        if (isMovie) {
+            query.with_watch_providers = TENCENT_CONFIG.provider;
+            query.watch_region = "CN";
+        } else {
+            query.with_networks = TENCENT_CONFIG.network;
+        }
+
+        // 分类过滤
+        if (category === "anime") {
+            query.with_genres = "16";
+        } else if (category === "variety") {
+            query.with_genres = "10764|10767";
+        } else if (category === "tv") {
+            query.without_genres = "16,10764,10767";
+        }
+
+        // 排序逻辑
+        if (sortBy === "hot") {
+            query.sort_by = "popularity.desc";
+            query["vote_count.gte"] = 10;
+        } 
+        else if (sortBy === "new") {
+            query.sort_by = isMovie 
+                ? "primary_release_date.desc" 
+                : "first_air_date.desc";
+
+            if (isMovie) {
+                query["primary_release_date.lte"] = today;
+            } else {
+                query["first_air_date.lte"] = today;
+            }
+        } 
+        else if (sortBy === "top") {
+            query.sort_by = "vote_average.desc";
+            query["vote_count.gte"] = 50;
+        }
+
+        const res = await Widget.tmdb.get(endpoint, { params: query });
+
+        const list = (res.results || [])
+            .map(item => buildItem(item, isMovie))
+            .filter(Boolean);
+
+        if (list.length === 0) {
             return [{
                 id: "empty",
                 type: "text",
-                title: "暂无内容",
-                description: "当前分类暂无数据"
+                title: "暂无数据",
+                description: "未找到相关内容"
             }];
         }
 
-        return items;
+        return list;
 
     } catch (e) {
+        console.error(e);
         return [{
             id: "error",
             type: "text",
