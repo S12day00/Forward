@@ -1,4 +1,6 @@
 {
+  "name":"图标库", 
+  "description":"各影视平台图标", 
   "icons":[
     {"name":"腾讯视频", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/TencentVideo.png"}
   ]
