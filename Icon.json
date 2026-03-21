@@ -4,6 +4,8 @@
   "icons":[
     {"name":"腾讯视频", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/TencentVideo.png"},
     {"name":"爱奇艺", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/IQIYI.png"},
-    {"name":"芒果TV", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/MangoTV.png"}
+    {"name":"芒果TV", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/MangoTV.png"},
+    {"name":"优酷", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/Youku.png"},
+    {"name":"Bilibili", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/Bilibili.png"}
   ]
 }
