@@ -1,7 +1,5 @@
 {
   "icons":[
-    {"name":"腾讯视频", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/腾讯视频.png"},
-    {"name":"爱奇艺", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/爱奇艺.png"},
-    {"name":"芒果TV", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/芒果TV.png"}
+    {"name":"腾讯视频", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/TencentVideo.png"}
   ]
 }
