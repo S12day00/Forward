@@ -2,6 +2,7 @@
   "name":"图标库", 
   "description":"各影视平台图标", 
   "icons":[
+    {"name":"头像", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/S12day00.png"},
     {"name":"腾讯视频", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/TencentVideo.png"},
     {"name":"爱奇艺", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/IQIYI.png"},
     {"name":"芒果TV", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/MangoTV.png"},
