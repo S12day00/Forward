@@ -25,8 +25,15 @@ var WidgetMetadata = {
         {
           name: "sort_by",
           title: "热门电影",
-          type: "constant",    
-          value: "华语"
+          type: "enumeration",    
+          value: "华语",
+          enumOptions: [
+            { title: "全部", value: "全部" },
+            { title: "华语", value: "华语" },
+            { title: "欧美", value: "欧美" },
+            { title: "韩国", value: "韩国" },
+            { title: "日本", value: "日本" }
+          ]
         }
       ]
     },
