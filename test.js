@@ -18,39 +18,29 @@ var WidgetMetadata = {
   ],
   modules: [
     {
-      title: "热门电影推荐",
+      title: "热门电影",
       functionName: "getHotMovies",
       cacheDuration: 43200,
       params: [
         {
           name: "sort_by",
-          title: "热门电影推荐",
-          type: "enumeration",
-          enumOptions: [
-            { title: "华语", value: "华语" }
-          ]
+          title: "热门电影",
+          type: "constant",    
+          value: "华语"
         }
       ]
     },
     {
-      title: "剧集推荐",
+      title: "热门国产剧集",
       functionName: "getHotTv",
       cacheDuration: 43200,
       params: [
         {
           name: "sort_by",
-          title: "类型",
+          title: "热门国产剧集",
           type: "enumeration",
           enumOptions: [
-            { title: "全部", value: "tv" },
-            { title: "国产剧", value: "tv_domestic" },
-            { title: "欧美剧", value: "tv_american" },
-            { title: "日剧", value: "tv_japanese" },
-            { title: "韩剧", value: "tv_korean" },
-            { title: "动画", value: "tv_animation" },
-            { title: "纪录片", value: "tv_documentary" },
-            { title: "国内综艺", value: "show_domestic" },
-            { title: "国外综艺", value: "show_foreign" }
+            { title: "国产剧", value: "tv_domestic" }
           ]
         }
       ]
