@@ -3,19 +3,19 @@
   "description":"各影视平台图标", 
   "icons":[
     {"name":"头像", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/S12day00.png"},
-    {"name":"腾讯视频", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/TencentVideo.png"},
+    {"name":"Bilibili", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/Bilibili.png"},
     {"name":"爱奇艺", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/IQIYI.png"},
     {"name":"芒果TV", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/MangoTV.png"},
+    {"name":"腾讯视频", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/TencentVideo.png"},
     {"name":"优酷", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/Youku.png"},
-    {"name":"Bilibili", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/Bilibili.png"},
+    {"name":"Car", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/Car.png"},
     {"name":"ChilledMelon", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/ChilledMelon.png"},
-    {"name":"EchoFlix", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/EchoFlix.png"},
-    {"name":"Peach", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/Peach.png"},
-    {"name":"OK", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/OK.png"},
-    {"name":"Hohai", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/Hohai.png"},
-    {"name":"NyaMedia", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/NyaMedia.png"},
     {"name":"CineTrail", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/CineTrail.png"},
+    {"name":"EchoFlix", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/EchoFlix.png"},
+    {"name":"Hohai", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/Hohai.png"},
     {"name":"LeWa", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/LeWa.png"},
-    {"name":"Car", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/Car.png"}
+    {"name":"NyaMedia", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/NyaMedia.png"},
+    {"name":"OK", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/OK.png"},
+    {"name":"Peach", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/Peach.png"}
   ]
 }
