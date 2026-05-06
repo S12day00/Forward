@@ -1,6 +1,6 @@
 {
   "name":"图标库", 
-  "description":"各影视平台图标", 
+  "description":"Emby影视库图标", 
   "icons":[
     {"name":"头像", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/S12day00.png"},
     {"name":"Bilibili", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/Bilibili.png"},
