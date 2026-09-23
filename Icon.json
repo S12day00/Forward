@@ -1,6 +1,6 @@
 {
   "name":"图标库", 
-  "description":"Emby影视库图标，更新时间：2026-09-17 23:00:00", 
+  "description":"Emby影视库图标，更新时间：2026-09-23 13:45:00", 
   "icons":[
     {"name":"S12day00", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/S12day00.png"},
     {"name":"腾讯视频", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/腾讯视频.png"},
@@ -14,6 +14,7 @@
     {"name":"西瓜", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/西瓜.png"},
     {"name":"可乐", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/可乐.png"},
     {"name":"野草地", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/野草地.png"},
+    {"name":"茶包", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/茶包.png"},
     {"name":"月亮", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/月亮.png"},
     {"name":"宸澄", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/宸澄.png"},
     {"name":"茶百道", "url":"https://raw.githubusercontent.com/S12day00/Forward/main/Icon/茶百道.png"},
